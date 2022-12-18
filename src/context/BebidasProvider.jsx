@@ -9,6 +9,8 @@ const BebidasProvider = ({children}) => {
     const [bebidaId, setBebidaId] = useState(null)
     const [bebida, setBebida] = useState({})
     const [cargando, setCargando] = useState(false)
+    const [carBebidas, setCarBebidas] = useState([])
+    const [abilitacar, setAbilitaCar] = useState(false)
 
     useEffect(() => {
         setCargando(true)
@@ -27,6 +29,14 @@ const BebidasProvider = ({children}) => {
         obtenerReceta()
     },[bebidaId])
 
+    useEffect(() => {
+        if(carBebidas.length === 0 ){
+            setAbilitaCar(false)
+        }else{
+            setAbilitaCar(true)
+        }
+    },[carBebidas])
+
     const consultarBebidas = async datos => {
         try {
             const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${datos.nombre}&c=${datos.categoria}`
@@ -42,6 +52,22 @@ const BebidasProvider = ({children}) => {
     const handleBebidaId = id => {
         setBebidaId(id)
     }
+    const handleAddCarousel = bebida => {
+        if(carBebidas.some(bebidaState => bebidaState.idDrink === bebida.idDrink)){
+           return
+        }else {
+            setCarBebidas([...carBebidas, bebida])
+        }
+       setModal(false)
+       goToTop()
+    }
+
+    const goToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
 
     return (
         <BebidasContext.Provider
@@ -52,7 +78,10 @@ const BebidasProvider = ({children}) => {
             modal,
             handleBebidaId,
             bebida,
-            cargando
+            cargando,
+            handleAddCarousel,
+            carBebidas,
+            abilitacar
          }}
         >
             {children}

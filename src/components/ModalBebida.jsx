@@ -1,9 +1,9 @@
-import { Modal, Image } from 'react-bootstrap'
+import { Modal, Image, Button } from 'react-bootstrap'
 import useBebidas from '../hooks/useBebidas'
 
 
 export default function ModalBebida() {
-  const { handleModalClick, modal, bebida, cargando } = useBebidas()
+  const { handleModalClick, modal, bebida, cargando, handleAddCarousel } = useBebidas()
   
   const mostrarIngredientes = () => {
     let ingredientes = []
@@ -32,6 +32,14 @@ export default function ModalBebida() {
             <h2>ingredientes y cantidades</h2>
               {mostrarIngredientes()}
           </div>
+          <Button
+            variant='danger'
+            className='text-uppercase w-100'
+            type="button"
+            onClick={() => handleAddCarousel(bebida)}
+            >
+               Agregar
+            </Button>
         </Modal.Body>
     </Modal>)
   )

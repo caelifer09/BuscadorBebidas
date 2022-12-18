@@ -27,6 +27,7 @@ export default function Formulario() {
   return (
     <Form
     onSubmit={handleSubmit}
+    className="mt-5"
     >
       {error && <Alert variant='danger' className='text-center'>{error}</Alert>}
         <Row>
