@@ -1,0 +1,16 @@
+.contenedor {
+    inset: unset;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    margin: 0;
+    margin-left: 35%;
+    margin-top: 0;
+    border: 1px solid #fbfbfb;
+    background: linear-gradient(90deg, rgba(215,75,75,1) 0%, rgba(255,70,83,1) 40%, rgba(255,0,0,1) 100%);
+}
+.contenedor p {
+    inset: unset;
+    color: black;
+    font-size: 1.2rem;
+}
