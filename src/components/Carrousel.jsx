@@ -9,7 +9,7 @@ function Carrousel() {
         for(let i = 1; i < 16; i++){
           if( bebida[`strIngredient${i}`] ) {
             ingredientes.push(
-              <li className='text-dark'>{bebida[`strIngredient${i}`]} {bebida[`strMeasure${i}`]}</li>
+              <li className='text-warning'>{bebida[`strIngredient${i}`]} {bebida[`strMeasure${i}`]}</li>
             )
           }
         }
@@ -22,16 +22,16 @@ function Carrousel() {
         <Carousel.Item
             key={bebida.idDrinks}
             >
-                <div className='bg-secondary'>
-                    <img 
+                <div className='bg-danger container d-flex justify-content-center d-flex align-items-center border border-success rounded'>
+                  <div>
+                  <img 
                      src={bebida.strDrinkThumb}
                      alt={`imagen de bebida: ${bebida.strDrink}`}
-                     width={400}
-                     height={200}
-                    />                               
+                    />
+                  </div>                                  
                 <Carousel.Caption>
-                    <p className='text-warning'>{bebida.strDrink}</p>                        
-                        {mostrarIngredientes(bebida)}
+                    <p className='text-warning font-weight-bold text-uppercase'>{bebida.strDrink}</p>  
+                    {mostrarIngredientes(bebida)}
                 </Carousel.Caption> 
                 </div>
         </Carousel.Item>  
